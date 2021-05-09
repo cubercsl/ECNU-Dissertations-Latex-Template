@@ -1,0 +1,21 @@
+name: latex-build
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: xu-cheng/latex-action@v2
+      with:
+        root_file: Dissertation-Main.tex
+        latexmk_use_xelatex: true
+      
+    - uses: actions/upload-artifact@v2
+      with:
+        path: Dissertation-Main.pdf
